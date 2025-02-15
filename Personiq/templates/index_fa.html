@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> personiq </title>
+  <link rel="stylesheet" href="static/styles_fa.css">
+</head>
+
+<body dir="rtl">
+
+    <!-- بخش لوگو و دکمه سوئیچ زبان -->
+    <header>
+        <img src="static/logo.jpeg" alt="Logo" class="logo">
+        <div class="language-switch">
+            <button onclick="switchLanguage('en')">Change to English</button>
+        </div>
+    </header>
+
+  <main>
+
+  <nav>
+    <button class="nav-btn" data-section="contact-us"><b>ارتباط با ما</b></button>
+    <button class="nav-btn" data-section="view-comments"><b>مشاهده نظرات</b></button>
+    <button class="nav-btn" data-section="add-comment"><b>ثبت کامنت</b></button>
+    <button class="nav-btn" data-section="completed-projects"><b>پروژه‌های انجام شده</b></button>
+    <button class="nav-btn" data-section="register-project"><b>ثبت پروژه</b></button>
+    <button class="nav-btn" data-section="ongoing-projects"><b>پروژه‌های در حال انجام</b></button>
+    <button class="nav-btn" data-section="registered-projects"><b>پروژه‌های ثبت شده</b></button>
+    <button class="nav-btn" data-section="home"><b>خانه</b></button>
+  </nav>
+
+    <!-- بخش تبلیغات -->
+    <section id="home" class="advertisement">
+        <div class="ad-text">
+            <p>کسب بیشترین کیفیت با کمترین قیمت: ما در Personic متعهد به ارائه خدمات با کیفیت بالا و قیمت‌های مناسب هستیم. پروژه‌های الکترونیکی شما را با دقت و حرفه‌ای انجام می‌دهیم.</p>
+            <p>پروژه‌های خاص و سفارشی‌سازی شده: ما به نیازهای خاص شما پاسخ می‌دهیم. از پروژه‌های سفارشی‌سازی شده برای دستگاه‌های خاص تا راه‌حل‌های جامع و منحصر به فرد، همه چیز را ارائه می‌دهیم.</p>
+            <p>توضیحات و گزارش‌های تشریحی کامل: ما نه تنها پروژه‌ها را با کیفیت بالا ارائه می‌دهیم، بلکه توضیحات و گزارش‌های تشریحی دقیق برای هر پروژه ارائه می‌دهیم. این گزارش‌ها به شما کمک می‌کنند تا درک عمیقی از کار انجام شده داشته باشید.</p>
+            <p>پروژه‌های مخصوص پروتئوس: تخصص ما در ارائه پروژه‌های حرفه‌ای با استفاده از نرم‌افزار پروتئوس است. تمامی پروژه‌ها با توضیحات تشریحی و گزارش خلاصه دقیق همراه هستند.</p>
+            <p>برای اطلاعات بیشتر و درخواست پروژه، به سایت ما مراجعه کنید و تجربه‌ای بی‌نظیر از کیفیت و حرفه‌ای بودن را تجربه کنید.</p>
+        </div>
+    </section>
+	
+	<!-- بخش پروژه‌های ثبت‌شده فارسی -->
+	<section id="registered-projects" class="registered-projects-comments">
+		<div class="project-intro">
+			<p><h3><b>
+				پروژه های ثبت شده<br>
+				در این بخش، پروژه‌هایی که توسط کاربران ثبت شده‌اند نمایش داده می‌شوند. اگر شما پروژه‌ای ثبت کرده‌اید اما در لیست مشاهده نمی‌کنید، لطفاً اتصال اینترنت خود را بررسی کرده و پس از چند دقیقه مجدداً تلاش کنید(مجدداً پروژه خود را ثبت کنید)
+			</b></h3></p>
+		</div>
+		<div class="registered-projects">
+			<h3> پروژه های ثبت شده </h3>
+			{% if farsi_registered_projects %}
+				{% for project in farsi_registered_projects %}
+					<div class="project-item">
+						<h4>{{ project.name }}</h4>
+						<p>{{ project.info_project }}</p>
+					</div>
+				{% endfor %}
+			{% else %}
+				<p>هیچ پروژه ثبت‌شده‌ای وجود ندارد.</p>
+			{% endif %}
+		</div>
+	</section>
+	
+    <!-- بخش پروژه‌های در حال انجام -->
+    <section id="ongoing-projects" class="current-projects-comments">
+				<div class="project-intro">
+			<p><h3><b>
+				پروژه‌های در حال انجام <br>
+				این بخش شامل پروژه‌هایی است که سایت در حال حاضر در دست اجرا دارد. اگر پروژه‌ای که ثبت کرده‌اید در این لیست نیست، لطفاً کدی که به شما داده‌ایم را برای ما ارسال کنید تا بررسی کنیم
+			</b></h3></p>
+		</div>
+        <div class="projects">
+            <h3> پروژه های در حال انجام </h3>
+            {% if farsi_projects %}
+                {% for project in farsi_projects %}
+                    <div class="project-item">
+                        <h4>{{ project.name }}</h4>
+                        <p>{{ project.info_project }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>هیچ پروژه در حال انجامی وجود ندارد.</p>
+            {% endif %}
+        </div>
+    </section>
+	
+    <!-- بخش ثبت پروژه -->
+    <section id="register-project" class="submit-project-comments">
+				<div class="project-intro">
+				<p><h3><b>
+				ثبت پروژه<br>
+				در این بخش می‌توانید پروژه خود را ثبت کنید. پس از ثبت، پروژه شما در بخش پروژه‌های ثبت‌شده نمایش داده می‌شود. اگر پروژه‌ای ثبت کرده‌اید اما در لیست مشاهده نمی‌کنید، لطفاً اتصال اینترنت خود را بررسی کرده و پس از چند دقیقه مجدداً تلاش کنید(مجدداً پروژه را ثبت کنید)
+			</b></h3></p>
+		</div>
+        <div class="submit-project" >
+            <h3>ثبت پروژه</h3>
+            <form action="/submit_project" method="post">
+                <input type="hidden" name="language" value="fa">
+                <label for="project_name">نام</label>
+                <input type="text" name="project_name" required>
+                <label for="email">ایمیل</label>
+                <input type="email" name="email" required>
+                <label for="description">توضیحات پروژه</label>
+                <textarea name="description" required></textarea>
+                <button type="submit">ثبت پروژه</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- بخش پروژه‌های انجام شده -->
+    <section id="completed-projects" class="done-projects-comments">
+	<div class="project-intro">
+			<p><h3><b>
+				پروژه‌های انجام‌شده<br>
+				این بخش شامل پروژه‌هایی است که با موفقیت توسط سایت به پایان رسیده‌اند. نمایش این پروژه‌ها به شما کمک می‌کند تا از کیفیت و اعتبار کارهای ما اطمینان حاصل کنید و با خیال راحت پروژه خود را به ما بسپارید
+			</b></h3></p>
+		</div>
+
+        <div class="done-projects">
+            <h3> پروژه های انجام شده  </h3>
+            {% if farsi_done_projects %}
+                {% for project in farsi_done_projects %}
+                    <div class="project-item">
+                        <p>{{ project.info_project }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>هیچ پروژه انجام شده‌ای به زبان فارسی وجود ندارد.</p>
+            {% endif %}
+        </div>
+    </section>
+	
+    <!-- بخش ثبت نظر -->
+    <section id="add-comment" class="submit-project-comments">
+<div class="project-intro">
+			<p><h3><b>
+				ثبت نظر شما<br>
+				نظرات شما برای ما ارزشمند است! اگر از خدمات ما رضایت دارید یا پیشنهادی برای بهبود دارید، خوشحال می‌شویم نظرتان را با ما به اشتراک بگذارید. با ثبت نظر خود، به ما کمک می‌کنید تا خدمات بهتری ارائه دهیم و دیگران نیز از تجربه شما استفاده کنند
+			</b></h3></p>
+		</div>
+
+        <div class="submit-comments">
+            <h3>ثبت نظر</h3>
+            <form action="/submit_comment" method="post">
+                <input type="hidden" name="language" value="fa">
+                <label for="name">نام</label>
+                <input type="text" name="name" required>
+                <label for="comment">نظر</label>
+                <textarea name="comment" required></textarea>
+                <button type="submit">ثبت نظر</button>
+            </form>
+        </div>
+    </section>	
+
+    <!-- بخش مشاهده نظرات -->
+    <section id="view-comments" class="submit-project-comments">
+	<div class="project-intro">
+			<p><h3><b>
+				نظرات کاربران<br>
+				در این بخش می‌توانید نظرات و تجربیات دیگر کاربران را مشاهده کنید. این نظرات نشان‌دهنده کیفیت خدمات ما و رضایت مشتریان است. اگر شما هم از خدمات ما استفاده کرده‌اید، خوشحال می‌شویم نظرتان را با ما و دیگران به اشتراک بگذارید	
+			</b></h3></p>
+		</div>
+
+        <div class="view-comments">
+            <h3> مشاهده نظرات  </h3>
+            {% if farsi_comments %}
+                {% for comment in farsi_comments %}
+                    <div class="comment-item">
+                        <h4>{{ comment.name }}</h4>
+                        <p>{{ comment.comment }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>هیچ نظری برای نمایش وجود ندارد.</p>
+            {% endif %}
+        </div>
+    </section>	
+	
+	<section id="contact-us">
+	  <div class="contact-container">
+		<h1>ارتباط با ما</h1>
+		<p class="email-link"><b>personiq__@outlook.com</b></p>
+		<div class="social-links">
+		  <a href="#" class="social-icon">&#x1F4E7;</a> <!-- ایمیل -->
+		</div>
+	  </div>
+	</section>
+
+  </main>
+    <!-- بخش حقوق و قوانین -->
+    <footer>
+        <div class="footer-center">
+            <p><h3><b>.این سایت در سال 2025 ساخته شده است. تمام حقوق محفوظ است.</h3></b></p>
+            <p><h3><b>حقوق و قوانین سایت: تمامی خدمات ارائه‌شده تحت شرایط خاص و قوانین مشخص انجام می‌شود.</h3></b></p>
+        </div>
+    </footer>
+  <script src="static/script_fa.js"></script>
+</body>
+</html>

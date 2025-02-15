@@ -1,0 +1,73 @@
+.b{
+    background-color:rgb(32, 230, 236);
+}
+.d{
+    background-color: rgb(8, 14, 65);
+    border-radius:20px ;
+}
+.img1{
+    height:100px ;
+    width: 100px;
+    border-radius: 50% ;
+    position: relative;
+    top: 21px ;
+    left: 578px ;
+}
+.d1{
+    background-color:rgb(33, 198, 219);
+    border-radius: 90%;
+}
+.p1{
+    color: rgb(177, 50, 0);
+    position: relative;
+    top: 21px ;
+    left: 580px ;
+}
+.p2{
+    color: rgb(194, 112, 4);
+    position: relative;
+    top: -62px ;
+    left: 801px ;
+}
+.p3{
+    color: rgb(6, 69, 163);
+    position: relative;
+    top: -83px ;
+    left: 123px ;
+}
+
+.d2{
+    background-color:rgb(103, 231, 253);
+    border-radius: 33%;
+}
+.h1{
+    color: rgb(8, 4, 4);
+    position: relative;
+    top: 40px ;
+    left: 589px ;  
+}
+.u1{
+    position: relative;
+    top: 50px ;
+    left: 470px ;     
+} 
+
+.d3{
+    background-color:rgb(37, 90, 235);
+    border-radius: 27%;
+}
+.h2{
+    color: rgb(8, 4, 4);
+    position: relative;
+    top: 9px ;
+    left: 589px ;  
+}
+.u2{
+    position: relative;
+    top: 11px ;
+    left: 513px ;    
+}
+.b1{
+    background-color: rgb(223, 100, 13);
+    width: 52px;
+}

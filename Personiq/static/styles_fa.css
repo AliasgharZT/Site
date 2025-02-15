@@ -1,0 +1,727 @@
+
+:root {
+  --primary-bg: #1a1a1a;
+  --primary-text: #f4f4f4;
+  --hover-bg: #333;
+  --hover-text: #ddd;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --transition: all 0.3s ease;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #2F4F5F;
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-padding: 0 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  /*direction: rtl; /* پشتیبانی بهتر از متن فارسی */
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  margin: 0 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: var(--transition);
+  color: var(--primary-text);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  min-width: 150px;
+  text-align: center;
+}
+
+.nav-btn b {
+  font-weight: 600;
+}
+
+.nav-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--hover-text);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: var(--hover-bg);
+  border-radius: 5px;
+  color: var(--hover-text);
+  animation: fadeIn 0.3s ease;
+}
+
+.nav-btn:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav-btn.active {
+  background: var(--hover-bg);
+  color: var(--hover-text);
+  border-radius: 5px;
+}
+
+.nav-btn.active::after {
+  transform: scaleX(1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main {
+  padding: 1rem;
+}
+
+section {
+  display: none;
+}
+
+section.active {
+  display: block;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #333;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .nav-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+    min-width: 120px;
+  }
+
+  nav {
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+
+/* بخش تبلیغات */
+.advertisement {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    background: linear-gradient(135deg, rgba(50, 50, 50, 0.9), rgba(10, 10, 10, 0.8));
+    border: 2px solid rgba(0, 255, 255, 0.5); /* خط دور با رنگ نئونی */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.3), 0 0 15px rgba(0, 255, 255, 0.5);
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.advertisement:hover {
+    background: linear-gradient(135deg, rgba(60, 60, 60, 0.95), rgba(20, 20, 20, 0.85)); /* کمی روشن‌تر شدن */
+    box-shadow: 0 9px 28px rgba(0, 255, 255, 0.4), 0 0 18px rgba(0, 255, 255, 0.6); /* تغییر ملایم‌تر */
+    transform: scale(1.01); /* بزرگ‌تر شدن ناچیز */
+}
+
+.ad-text {
+    width: 100%;
+    color: rgba(0, 255, 255, 0.9); /* رنگ متن به نئونی نزدیک */
+    font-size: 1.2rem;
+    font-family: 'Courier New', Courier, monospace; /* فونت تکنولوژی‌محور */
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.7); /* سایه نئونی */
+    white-space: pre-line;
+    text-align: center; /* تراز متن در وسط */
+}
+
+/* بخش پروژه‌های ثبت شده */
+.registered-projects-comments {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.registered-projects {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* پس‌زمینه تیره با شفافیت */
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* سایه تاریک */
+    transition: box-shadow 0.3s ease-in-out;
+    overflow-y: auto;
+}
+
+.registered-projects:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.7); /* سایه سبز در حالت hover */
+}
+
+.registered-projects h3 {
+    color: #0ff; /* رنگ فیروزه‌ای برای عنوان */
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.registered-projects .project-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1); /* پس‌زمینه سفید با شفافیت */
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 255, 0.3); /* حاشیه فیروزه‌ای */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.registered-projects .project-item:hover {
+    transform: translateY(-5px); /* حرکت به بالا در حالت hover */
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.5); /* سایه فیروزه‌ای در حالت hover */
+}
+
+.registered-projects .project-item h4 {
+    color: #0ff; /* رنگ فیروزه‌ای برای عنوان پروژه */
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+	text-align: right;
+}
+
+.registered-projects .project-item p {
+    color: white; /* رنگ متن سفید */
+    font-size: 1rem;
+    line-height: 1.6;
+    white-space: pre-line;
+    word-wrap: break-word;
+    word-break: break-word;
+	text-align: right;
+}
+
+.project-intro p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+	text-align: right;
+}
+
+/* بخش پروژه‌های در حال انجام */
+.current-projects-comments {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.projects {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.5);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease;
+    height: none; /* ارتفاع ثابت */
+    overflow-y: auto; /* اسکرول عمودی */
+}
+
+.projects:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.8);
+    transform: translateY(-5px);
+}
+
+.projects h3 {
+    color: #0ff;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.projects .project-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projects .project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.5);
+}
+
+.projects .project-item h4 {
+    color: #0ff;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+	text-align: right;
+}
+
+.projects .project-item p {
+    color: white;
+    font-size: 1rem;
+    line-height: 1.6;
+    white-space: pre-line;
+    word-wrap: break-word;
+    word-break: break-word;
+	text-align: right;
+}
+
+/* بخش پروژه‌های انجام شده */
+.done-projects-comments {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.done-projects {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.5);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease;
+    height: none; /* ارتفاع ثابت */
+    overflow-y: auto; /* اسکرول عمودی */
+}
+
+.done-projects:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.8);
+    transform: translateY(-5px);
+}
+
+.done-projects h3 {
+    color: #0ff;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.done-projects .project-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.done-projects .project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.5);
+}
+
+.done-projects .project-item h4 {
+    color: #0ff;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+	text-align: right;
+}
+
+.done-projects .project-item p {
+    color: white;
+    font-size: 1rem;
+    line-height: 1.6;
+    white-space: pre-line;
+    word-wrap: break-word;
+    word-break: break-word;
+	text-align: right;
+}
+
+/* بخش مشاهده نظرات */
+.view-comments {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.5);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease;
+    height: none; /* ارتفاع ثابت */
+    overflow-y: auto; /* اسکرول عمودی */
+}
+
+.view-comments:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.8);
+    transform: translateY(-5px);
+}
+
+.view-comments h3 {
+    color: #0ff;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.view-comments .comment-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.view-comments .comment-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.5);
+}
+
+.view-comments .comment-item h4 {
+    color: #0ff;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+	text-align: right;
+}
+
+.view-comments .comment-item p {
+    color: white;
+    font-size: 1rem;
+    line-height: 1.6;
+    white-space: pre-line;
+    word-wrap: break-word;
+    word-break: break-word;
+	text-align: right;
+}
+
+/* بخش حقوق و قوانین */
+footer {
+    width: 100%;
+    margin-top: 50px;
+    font-size: 14px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgba(0, 255, 255, 0.9);
+    padding: 25px 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    transition: background-color 0.3s ease-in-out;
+    text-align: center;
+    position: relative;
+}
+
+.footer-center {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+/* بخش ثبت پروژه و نظرات */
+.submit-project-comments {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.submit-project, .submit-comments {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.5);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease;
+    height: auto;
+    overflow: visible;
+}
+
+.submit-project:hover, .submit-comments:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.8);
+    transform: translateY(-5px);
+}
+
+.submit-project input, .submit-project textarea, .submit-comments input, .submit-comments textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(0, 255, 255, 0.8);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+	text-align:right;
+}
+
+.submit-project input:focus, .submit-project textarea:focus, .submit-comments input:focus, .submit-comments textarea:focus {
+    border-color: #0ff;
+    outline: none;
+}
+
+.submit-project button, .submit-comments button {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(0, 255, 0, 0.6);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-project button:hover, .submit-comments button:hover {
+    background-color: rgba(0, 255, 0, 1);
+}
+
+.submit-comments{
+	text-align:right;
+}
+
+.submit-project{
+	text-align:right;
+}
+
+/* تنظیمات عمومی */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    direction: ltr;
+    text-align: left;
+    background-image: url('proteus_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* استایل کلی برای بخش لوگو */
+header {
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+}
+
+/* استایل لوگو */
+.logo {
+    width: 200px;
+    max-width: 100%;
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.6));
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.3), rgba(0, 0, 0, 0.7));
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+}
+
+.logo:hover {
+    transform: scale(1.1) rotate(5deg); /* چرخش و بزرگ شدن */
+    filter: drop-shadow(0 0 30px rgba(0, 255, 255, 0.8));
+    box-shadow: 0 0 50px rgba(0, 255, 255, 1), 0 0 25px rgba(0, 200, 255, 0.9), 0 0 10px rgba(255, 0, 255, 0.7);
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.7), rgba(0, 0, 0, 0.9));
+    animation: glowing 1.5s ease-in-out infinite;
+}
+
+@keyframes glowing {
+    0% {
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 25px rgba(0, 200, 255, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 255, 255, 1), 0 0 40px rgba(0, 255, 255, 0.9);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.8), 0 0 25px rgba(0, 200, 255, 0.6);
+    }
+}
+
+/* استایل دکمه سوئیچ زبان */
+.language-switch button {
+    background-color: #2F5F5F;
+    color: #E0E0E0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    width: auto; /* اضافه شده برای اطمینان از عرض مناسب */
+}
+
+.language-switch {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    overflow: hidden; /* اضافه شده برای جلوگیری از اسکرول */
+}
+
+
+/* Hover effect */
+.language-switch button:hover {
+    background-color: #2F7F5F;
+    color: #ffffff;
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 255, 255, 0.4);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+/* Active effect */
+.language-switch button:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Neon background pulse effect */
+.language-switch button::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: rgba(0, 255, 255, 0.2);
+    border-radius: 8px;
+    z-index: -1;
+    animation: pulseEffect 2s infinite ease-in-out;
+}
+
+@keyframes pulseEffect {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.6);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .language-switch {
+        top: 8px;
+        right: 8px;
+    }
+
+    .logo {
+        width: 150px;
+    }
+
+    .language-switch button {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 120px;
+    }
+
+    .language-switch button {
+        font-size: 10px;
+        padding: 6px 12px;
+    }
+}
+
+
+/* بخش ارتباط با ما */
+.contact-container {
+    background-color: rgba(0, 0, 0, 0.8); /* پس‌زمینه تیره با شفافیت */
+    padding: 20px;
+    border-radius: 15px; /* گوشه‌های گرد */
+    border: 1px solid rgba(0, 255, 255, 0.3); /* حاشیه فیروزه‌ای */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* سایه تاریک */
+    transition: box-shadow 0.3s ease-in-out;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 40px; /* افزایش فاصله از بالا */
+}
+
+.contact-container:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.7); /* سایه سبز در حالت hover */
+}
+
+.contact-container h1 {
+    color: rgba(0, 255, 255, 0.9); /* رنگ فیروزه‌ای برای عنوان */
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 15px;
+}
+
+.email-link {
+    display: block;
+    color: rgba(0, 255, 255, 0.9); /* رنگ فیروزه‌ای برای لینک ایمیل */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    margin-top: 10px;
+    text-decoration: none; /* حذف زیرخط لینک */
+    transition: color 0.3s ease-in-out;
+}
+
+.email-link:hover {
+    color: #00ffcc; /* رنگ فیروزه‌ای روشن‌تر در حالت hover */
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-icon {
+    color: rgba(0, 255, 255, 0.9); /* رنگ فیروزه‌ای برای آیکون‌ها */
+    margin: 0 10px;
+    font-size: 24px;
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+    color: #00ffcc; /* رنگ فیروزه‌ای روشن‌تر در حالت hover */
+    text-shadow: 0 0 6px rgba(0, 255, 255, 0.7), 0 0 12px rgba(0, 255, 255, 0.5); /* افکت نئونی */
+}
+
+/* متن توضیحات شفاف  */
+.project-intro {
+    background-color: rgba(0, 0, 0, 0.8); /* هماهنگ با پس‌زمینه بخش پروژه‌ها */
+    color: rgba(0, 255, 255, 0.9); /* رنگ متن  */
+    padding: 15px;
+    border-radius: 15px; /* هماهنگ با بخش پروژه‌ها */
+    text-align: center;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 255, 255, 0.3); /* حاشیه فیروزه‌ای هماهنگ */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* سایه هماهنگ */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.project-intro:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.7); /* سایه سبز در حالت hover */
+}
+

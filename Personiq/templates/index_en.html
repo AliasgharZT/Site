@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Title -->
+  <title>Personiq | انجام پروژه‌های پروتئوس</title>
+  
+  <!-- Meta Description -->
+  <meta name="description" content="Personiq؛ خدمات حرفه‌ای انجام پروژه‌های پروتئوس به زبان فارسی و انگلیسی. پروژه‌های دقیق و با کیفیت در طراحی مدارهای الکترونیکی.">
+  
+  <!-- Keywords Meta Tag -->
+  <meta name="keywords" content="پرسونیک, personiq, پروژه‌های پروتئوس, انجام پروژه‌های پروتئوس, طراحی مدار, Proteus Projects, Electronics Projects, Simulation, Electronics Circuit Design">
+  
+  <!-- Author Meta Tag -->
+  <meta name="author" content="Personiq Team">
+  
+  <link rel="stylesheet" href="static/styles_en.css">
+</head>
+
+
+<body dir="ltr">
+
+  <!-- Logo and language switch button -->
+  <header>
+    <img src="static/logo.jpeg" alt="Logo" class="logo">
+    <div class="language-switch">
+      <button onclick="switchLanguage('fa')"> تغییر به فارسی </button>
+    </div>
+  </header>
+
+  <main>
+
+    <nav>
+      <button class="nav-btn" data-section="contact-us"><b>Contact Us</b></button>
+      <button class="nav-btn" data-section="view-comments"><b>View Comments</b></button>
+      <button class="nav-btn" data-section="add-comment"><b>Add Comment</b></button>
+      <button class="nav-btn" data-section="completed-projects"><b>Completed Projects</b></button>
+      <button class="nav-btn" data-section="register-project"><b>Register Project</b></button>
+      <button class="nav-btn" data-section="ongoing-projects"><b>Ongoing Projects</b></button>
+      <button class="nav-btn" data-section="registered-projects"><b>Registered Projects</b></button>
+      <button class="nav-btn" data-section="home"><b>Home</b></button>
+    </nav>
+
+    <!-- Advertisement Section -->
+    <section id="home" class="advertisement">
+      <div class="ad-text">
+        <p>Get the highest quality at the lowest price: At Personic, we are committed to providing high-quality services at reasonable prices. We handle your electronic projects with precision and professionalism.</p>
+        <p>Specialized and customized projects: We cater to your specific needs. From customized projects for specific devices to comprehensive and unique solutions, we offer it all.</p>
+        <p>Complete descriptive explanations and reports: We not only deliver high-quality projects but also provide detailed descriptive explanations for each project. These reports help you have a deep understanding of the work done.</p>
+        <p>Proteus-specific projects: Our expertise lies in delivering professional projects using the Proteus software. All projects come with detailed explanations and precise summary reports.</p>
+        <p>For more information and project requests, visit our website and experience unparalleled quality and professionalism.</p>
+      </div>
+    </section>
+
+    <!-- Registered Projects Section -->
+    <section id="registered-projects" class="registered-projects-comments">
+      <div class="project-intro">
+        <h3><b>
+          Registered Projects <br>
+          In this section, the projects registered by users are displayed. If you have registered a project but do not see it in the list, please check your internet connection and try again in a few minutes(Register your project again).
+        </b></h3>
+      </div>
+      <div class="registered-projects">
+        <h3>Registered Projects</h3>
+        {% if english_registered_projects %}
+          {% for project in english_registered_projects %}
+            <div class="project-item">
+              <h4>{{ project.name }}</h4>
+              <p>{{ project.info_project }}</p>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>No registered projects.</p>
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- Ongoing Projects Section -->
+    <section id="ongoing-projects" class="current-projects-comments">
+      <div class="project-intro">
+        <h3><b>
+          Ongoing Projects <br>
+          This section includes projects that the site is currently executing. If the project you registered is not in this list, please send us the code we provided to check.
+        </b></h3>
+      </div>
+      <div class="projects">
+        <h3>Ongoing Projects</h3>
+        {% if english_projects %}
+          {% for project in english_projects %}
+            <div class="project-item">
+              <h4>{{ project.name }}</h4>
+              <p>{{ project.info_project }}</p>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>No ongoing projects.</p>
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- Register Project Section -->
+    <section id="register-project" class="submit-project-comments">
+      <div class="project-intro">
+        <h3><b>
+          Register Project <br>
+          In this section, you can register your project. Once registered, your project will be displayed in the Registered Projects section. If you registered a project but do not see it in the list, please check your internet connection and try again in a few minutes(Register your project again).
+        </b></h3>
+      </div>
+      <div class="submit-project">
+        <h3>Register Project</h3>
+        <form action="/submit_project" method="post">
+          <input type="hidden" name="language" value="en">
+          <label for="project_name">Name</label>
+          <input type="text" name="project_name" required>
+          <label for="email">Email</label>
+          <input type="email" name="email" required>
+          <label for="description">Project Description</label>
+          <textarea name="description" required></textarea>
+          <button type="submit">Register Project</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Completed Projects Section -->
+    <section id="completed-projects" class="done-projects-comments">
+      <div class="project-intro">
+        <h3><b>
+          Completed Projects <br>
+          This section includes projects successfully completed by the site. Displaying these projects helps you to ensure the quality and reliability of our work and confidently entrust us with your project.
+        </b></h3>
+      </div>
+      <div class="done-projects">
+        <h3>Completed Projects</h3>
+        {% if english_done_projects %}
+          {% for project in english_done_projects %}
+            <div class="project-item">
+              <p>{{ project.info_project }}</p>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>No completed projects in English.</p>
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- Add Comment Section -->
+    <section id="add-comment" class="submit-project-comments">
+      <div class="project-intro">
+        <h3><b>
+          Submit Your Comment <br>
+          Your feedback is valuable to us! If you are satisfied with our services or have a suggestion for improvement, we would love to hear from you. By submitting your comment, you help us provide better services and others benefit from your experience.
+        </b></h3>
+      </div>
+      <div class="submit-comments">
+        <h3>Add Comment</h3>
+        <form action="/submit_comment" method="post">
+          <input type="hidden" name="language" value="en">
+          <label for="name">Name</label>
+          <input type="text" name="name" required>
+          <label for="comment">Comment</label>
+          <textarea name="comment" required></textarea>
+          <button type="submit">Add Comment</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- View Comments Section -->
+    <section id="view-comments" class="submit-project-comments">
+      <div class="project-intro">
+        <h3><b>
+          User Comments <br>
+          In this section, you can view the comments and experiences of other users. These comments reflect the quality of our services and customer satisfaction. If you have also used our services, we would be happy to share your feedback with us and others.
+        </b></h3>
+      </div>
+      <div class="view-comments">
+        <h3>View Comments</h3>
+        {% if english_comments %}
+          {% for comment in english_comments %}
+            <div class="comment-item">
+              <h4>{{ comment.name }}</h4>
+              <p>{{ comment.comment }}</p>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>No comments to display.</p>
+        {% endif %}
+      </div>
+    </section>
+
+    <section id="contact-us">
+      <div class="contact-container">
+        <h1>Contact Us</h1>
+        <p class="email-link"><b>personiq__@outlook.com</b></p>
+        <div class="social-links">
+          <a href="#" class="social-icon">&#x1F4E7;</a> <!-- Email -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-center">
+      <p><b>&copy; This site was created in 2025. All rights reserved.</b></p>
+      <p><b>Site Terms and Conditions: All services are provided under specific terms and conditions.</b></p>
+    </div>
+  </footer>
+  <script src="static/script_en.js"></script>
+</body>
+
+</html>
+
